@@ -1,0 +1,11 @@
+# Netlify Functions config (Git-connected or CLI deploy only — drag-and-drop
+# does NOT deploy functions).
+[build]
+  functions = "netlify/functions"
+
+[functions]
+  # Bundle the circuit artifacts with the function so snarkjs can read them.
+  included_files = ["circuits/**"]
+  # Free-tier max is 26s (default 10s). The agent answers in ~1-2s locally;
+  # 26s leaves room for a cold start plus a bounded Kurier poll.
+  timeout = 26
